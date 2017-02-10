@@ -16,6 +16,8 @@ void ofApp::setup(){
     ofHttpRequest request = ofHttpRequest("http://cbk0.google.com/cbk?output=xml&ll=" + ofToString(latlon[0]) + "," + ofToString(latlon[1]) + "&dm=1","");
     ofLoadURLAsync(request.url, "google_data_request");
     
+    cam.setNearClip(0.01f);
+    
 }
 
 //--------------------------------------------------------------
@@ -97,10 +99,11 @@ void ofApp::urlResponse(ofHttpResponse & response) {
             
             //create the depthmap
             constructDepthMap();
+            
+            //create the point cloud
+            constructPointCloud();
         }
     }
-   
-    
 }
 
 //--------------------------------------------------------------
@@ -209,8 +212,6 @@ void ofApp::constructDepthMap() {
     }
     
     depthmapimage.setFromPixels(depthPixels, width, height, OF_IMAGE_GRAYSCALE);
-    
-    constructPointCloud();
 }
 
 
