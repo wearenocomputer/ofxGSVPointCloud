@@ -211,7 +211,7 @@ void ofApp::constructDepthMap() {
         }
     }
     
-    depthmapimage.setFromPixels(depthPixels, width, height, OF_IMAGE_GRAYSCALE);
+    depthmapimage.setFromPixels(depthPixels);
 }
 
 
